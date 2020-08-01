@@ -1,38 +1,155 @@
-.App {
-  text-align: center;
+body {
+	font-size: 14px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#drum-machine {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 7rem auto;
+	padding: 2rem;
+	width: 40%;
+	background-color: #EEDBF2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#display {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	width: 90%;
+	height: 3.5rem;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	background-color: #082030;
+	color: #FFF;
+	border-radius: 7px;
+	box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#display span {
+	padding: 10px 20px;
+	font-size: 1.3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.Pads {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drum-pad {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	background-color: #A09CB0;
+	color: #2e2f3e;
+	width: 30%;
+	align-items: center;
+	margin: 5px;
+	padding: 20px 20px;
+	border-radius: .2rem;
+	font-weight: 700;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.drum-pad:hover {
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	#drum-machine {
+		width: 80%;
+		margin: 7rem auto;
+	}
+	
+	.drum-pad {
+		width: 30%;
+		margin: 5px;
+	}
+}
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 80%;
+	margin: 10px auto;
+}
+
+.buttons .switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.buttons .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.buttons .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #EF746A;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.buttons .bank {
+	background-color: #2D2D2D;
+}
+
+.buttons .slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.buttons input:checked + .slider {
+  background-color: #46A049;
+}
+
+.buttons input:checked + .bank {
+	background-color: #2D2D2D;
+}
+
+.buttons input:focus + .slider {
+  box-shadow: 0 0 1px #46A049;
+}
+
+.buttons input:focus + .bank {
+	background-color: #2D2D2D;
+}
+
+.buttons input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.buttons .slider.round {
+  border-radius: 17px;
+}
+
+.buttons .slider.round:before {
+  border-radius: 50%;
 }
